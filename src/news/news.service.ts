@@ -24,8 +24,8 @@ export class NewsService {
     let result = [];
     for (let i = 0; i < news.length; i++) {
       const image = await this.getImage(news[i]);
-      const {id, part1, part2, title} = news[i];
-      result.push({ id, part1, part2, title, image });
+      const {id, part1, part2, title, createdAt} = news[i];
+      result.push({ id, part1, part2, title, image, createdAt });
     }
 
     return result;
@@ -39,8 +39,8 @@ export class NewsService {
       }
     });
     const image = await this.getImage(news);
-    const {id, part1, part2, title} = news;
-    return {id, part1, part2, title, image }
+    const {id, part1, part2, title, createdAt} = news;
+    return {id, part1, part2, title, image, createdAt }
   }
 
   async create(dto: CreateNewsDto) {
