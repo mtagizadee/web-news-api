@@ -8,6 +8,7 @@ import { ImagesModule } from "../images/images.module";
 import { NewsModule } from "../news/news.module";
 import { Image } from "../images/image.model";
 import { News } from "../news/news.model";
+import { resolve } from "path";
 
 @Module({
   imports: [

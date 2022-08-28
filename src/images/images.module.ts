@@ -25,6 +25,7 @@ import { Image } from "./image.model";
       })
     }),
     SequelizeModule.forFeature([Image])
-  ]
+  ],
+  exports: [ImagesService]
 })
 export class ImagesModule {}
