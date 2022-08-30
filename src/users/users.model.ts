@@ -1,4 +1,15 @@
-import { Column, Model, PrimaryKey, Table, AllowNull, IsEmail, Unique, AutoIncrement } from "sequelize-typescript";
+import {
+  Column,
+  Model,
+  PrimaryKey,
+  Table,
+  AllowNull,
+  IsEmail,
+  Unique,
+  AutoIncrement,
+  HasMany
+} from "sequelize-typescript";
+import { Comment } from "../comments/comments.model";
 
 @Table
 export class User extends Model {
@@ -20,4 +31,7 @@ export class User extends Model {
   @AllowNull(false)
   @Column
   password: string;
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 }

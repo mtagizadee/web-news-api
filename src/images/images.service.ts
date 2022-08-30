@@ -15,9 +15,7 @@ export class ImagesService {
     if (!image) throw new NotFoundException('image is not found');
 
     const stream: ReadStream = createReadStream(join(process.cwd(),image.path));
-    return {
-      stream: new StreamableFile(stream)
-    }
+    return new StreamableFile(stream);
   }
 
   async create(dto: CreateImageDto) {

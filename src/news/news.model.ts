@@ -1,7 +1,8 @@
 import {
   AllowNull,
   AutoIncrement,
-  Column, DataType,
+  DataType,
+  Column,
   HasMany,
   Length,
   Model,
@@ -10,6 +11,7 @@ import {
   Unique
 } from "sequelize-typescript";
 import { Image } from "../images/image.model";
+import { Comment } from "../comments/comments.model";
 
 @Table
 export class News extends Model {
@@ -42,4 +44,7 @@ export class News extends Model {
 
   @HasMany(() => Image)
   images: Image[];
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 }

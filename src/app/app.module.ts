@@ -9,6 +9,8 @@ import { NewsModule } from "../news/news.module";
 import { Image } from "../images/image.model";
 import { News } from "../news/news.model";
 import { resolve } from "path";
+import { CommentsModule } from "../comments/comments.module";
+import { Comment } from "../comments/comments.model";
 
 @Module({
   imports: [
@@ -22,11 +24,12 @@ import { resolve } from "path";
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB,
-      models: [User, Image, News],
+      models: [User, Image, News, Comment],
       autoLoadModels: true
     }),
     AuthModule, UsersModule,
-    ImagesModule, NewsModule
+    ImagesModule, NewsModule,
+    CommentsModule
   ]
 })
 export class AppModule {}
