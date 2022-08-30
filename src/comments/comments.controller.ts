@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, ParseIntPipe, Post, UseGuards } from "@nestjs/common";
 import { CommentsService } from "./comments.service";
 import { CreateCommentDto } from "./dto";
+import { JwtAuthGuard } from "../auth/auth.guard";
+import { Client } from "../decorators";
 
 @Controller('comments')
 export class CommentsController {
@@ -11,13 +13,14 @@ export class CommentsController {
     return await this.service.findAll({});
   }
 
-  @Get('id')
+  @Get(':id')
   async findOne(@Param('id',ParseIntPipe) id: number) {
     return await this.service.findOne({ id });
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() dto: CreateCommentDto) {
-    return await this.service.create(dto);
+  async create(@Client('id') authorId: number,@Body() dto: CreateCommentDto) {
+    return await this.service.create(authorId, dto);
   }
 }

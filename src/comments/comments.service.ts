@@ -16,7 +16,7 @@ export class CommentsService {
     return await this.repository.findOne({ where });
   }
 
-  async create(dto: CreateCommentDto) {
-    return await this.repository.create({...dto});
+  async create(authorId: number,dto: CreateCommentDto) {
+    return await this.repository.create({...dto, authorId});
   }
 }
