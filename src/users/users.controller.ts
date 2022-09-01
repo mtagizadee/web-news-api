@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe, UseGuards } from "@nestjs/common";
+import { Controller, ForbiddenException, Get, Param, ParseIntPipe, UseGuards } from "@nestjs/common";
 import { UsersService } from "./users.service";
 
 @Controller('users')

@@ -8,7 +8,7 @@ export class ImagesController {
 
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
-    return await this.service.findOne({ id });
+    return await this.service.findOne({ newsId: id });
   }
 
   @Post('news=:newsId')

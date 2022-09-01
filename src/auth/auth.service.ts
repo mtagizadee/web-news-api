@@ -36,8 +36,8 @@ export class AuthService {
   }
 
   private async sign(user: User) {
-    const {email, fullName, id} = user;
-    const payload: Payload = { id, email, fullName }
+    const {email, fullName, id, comments} = user;
+    const payload: Payload = { id, fullName }
 
     const token: string = this.jwtService.sign(payload,{
       expiresIn: '72h',

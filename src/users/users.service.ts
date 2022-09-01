@@ -10,11 +10,17 @@ export class UsersService {
   constructor(@InjectModel(User) private readonly repository: typeof User) {}
 
   async findAll(where: WhereOptions<User>) {
-    return await this.repository.findAll({ where });
+    return await this.repository.findAll({
+      where,
+      include: { all: true }
+    });
   }
 
   async findOne(where: WhereOptions<User>) {
-    return await this.repository.findOne({ where });
+    return await this.repository.findOne({
+      where,
+      include: { all: true }
+    });
   }
 
   async create(dto: CreateUserDto) {

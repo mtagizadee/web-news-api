@@ -9,11 +9,17 @@ export class CommentsService {
   constructor(@InjectModel(Comment) private readonly repository: typeof Comment) {}
 
   async findAll(where: WhereOptions) {
-    return await this.repository.findAll({ where });
+    return await this.repository.findAll({
+      where,
+      include: { all: true }
+    });
   }
 
   async findOne(where: WhereOptions) {
-    return await this.repository.findOne({ where });
+    return await this.repository.findOne({
+      where,
+      include: { all: true }
+    });
   }
 
   async create(authorId: number,dto: CreateCommentDto) {
